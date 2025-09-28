@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My App{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">{% block logo %} Tasks {% endblock %}</h1>
+            <nav>
+                {% block navbar %}
+                {% endblock %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="page-container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

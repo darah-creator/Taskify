@@ -1,0 +1,198 @@
+/* ===== CSS Variables ===== */
+:root
+{
+    --card-bg: var(--secondary-bg);
+    --card-border: #3b3b3b;
+    --card-radius: 0px;
+    --card-padding: 1.5rem;
+
+    --stat-approved: #10b981;
+    --stat-pending: #f59e0b;
+    --stat-rejected: #ef4444;
+
+    --result-bg: var(--secondary-bg);
+    --result-border: #3b3b3b;
+    --result-radius: 0px;
+    --result-padding: 1rem;
+}
+
+/* ===== Container ===== */
+.dashboard-container
+{
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== Headings ===== */
+.dashboard-container h2
+{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+/* ===== Stats Section ===== */
+.stats
+{
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.stat-card
+{
+    flex: 1 1 200px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+    text-align: center;
+}
+
+.stat-card h4
+{
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--subtext);
+}
+
+.stat-card p
+{
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text);
+}
+
+.stat-card.approved p { color: var(--stat-approved); }
+.stat-card.pending p { color: var(--stat-pending); }
+.stat-card.rejected p { color: var(--stat-rejected); }
+
+/* ===== Uploaded Taskss / Results ===== */
+.my-tasks h3
+{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.results-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.result-card
+{
+    background: var(--result-bg);
+    border: 1px solid var(--result-border);
+    border-radius: var(--result-radius);
+    padding: var(--result-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.15s ease;
+}
+
+.result-card:hover
+{
+    transform: translateY(-2px);
+}
+
+.result-task
+{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--result-radius);
+}
+
+.result-info{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.result-info h5
+{
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.result-info p
+{
+    font-size: 0.95rem;
+    color: var(--subtext);
+}
+
+.status
+{
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0px;
+    text-transform: uppercase;
+}
+
+.status.approved { background: var(--stat-approved); color: var(--primary-bg); }
+.status.pending  { background: var(--stat-pending);  color: var(--primary-bg); }
+.status.rejected { background: var(--stat-rejected); color: var(--primary-bg); }
+
+/* ===== Result Actions (Buttons) ===== */
+.result-actions
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    gap: 1rem;
+}
+
+.result-actions .btn
+{
+    background-color: var(--accent);
+    color: var(--text);
+    border: 1px solid var(--accent);
+    flex: 1;
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.result-actions .btn:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+}
+
+.result-actions .btn.danger
+{
+    background: #ef4444;
+    color: var(--text);
+    border: 1px solid #ef4444;
+}
+
+.result-actions .btn.danger:hover
+{
+    background: var(--primary-bg);
+    color: #ef4444;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px)
+{
+    .stats { flex-direction: column; }
+    .results-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+
+@media (max-width: 768px)
+{
+    .dashboard-container h2 { font-size: 2rem; }
+    .result-task { height: 150px; }
+    .result-actions .btn { font-size: 0.85rem; padding: 0.6rem 0; }
+}

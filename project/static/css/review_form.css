@@ -1,0 +1,101 @@
+/* ========================
+   Review Form Styling
+   ======================== */
+
+.review-form
+{
+    margin-top: 1.5rem;
+    background: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 0px;
+    border: 1px solid var(--form-border);
+}
+
+.review-form p
+{
+    margin-bottom: 1rem;
+}
+
+.review-form label
+{
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.review-form input,
+.review-form textarea,
+.review-form select
+{
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--form-input-border);
+    border-radius: 0px;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: var(--primary-bg);
+    color: var(--text);
+}
+
+.review-form input:focus,
+.review-form textarea:focus,
+.review-form select:focus
+{
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Actions */
+.result-actions
+{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-actions .btn
+{
+    padding: 0.6rem 1.2rem;
+    border-radius: 0px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--text);
+}
+
+.result-actions .btn:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+}
+
+.result-actions .btn.success
+{
+    background: #10b981;
+    color: var(--primary-bg);
+    border-color: #10b981;
+}
+
+.result-actions .btn.success:hover
+{
+    background: var(--primary-bg);
+    color: #10b981;
+}
+
+.result-actions .btn.secondary
+{
+    background: var(--secondary-bg);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.result-actions .btn.secondary:hover
+{
+    background: var(--accent);
+    color: var(--text);
+}

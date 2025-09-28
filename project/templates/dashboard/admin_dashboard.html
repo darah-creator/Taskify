@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+{% endblock %}
+
+{% block navbar %}
+<a href="{% url 'create_task' %}">Assign Tasks</a>
+<a href="{% url 'signout' %}">Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>Welcome, {{ user.username }} (Admin)</h2>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-card">
+            <h4>Total Tasks</h4>
+            <p>{{ total_tasks }}</p>
+        </div>
+        <div class="stat-card pending">
+            <h4>Ungraded</h4>
+            <p>{{ ungraded_count }}</p>
+        </div>
+    </section>
+
+    <!-- Ungraded Tasks -->
+    <section class="pending-section">
+        <h3>Tasks Awaiting Grading</h3>
+        <div class="results-grid">
+            {% for task in ungraded_tasks %}
+            <div class="result-card">
+                <div class="result-info">
+                    <h5>{{ task.title }}</h5>
+                    <p>By <strong>{{ task.user.username }}</strong> on {{ task.created_at|date:"M d, Y" }}</p>
+                    {% if task.file %}
+                    {% endif %}
+                </div>
+                <div class="result-actions">
+                    <a href="{% url 'review_task' task.id %}" class="btn secondary">Review</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>No tasks awaiting grading.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Recent Tasks -->
+    <section class="recent-section">
+        <h3>Recent Tasks</h3>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Assigned To</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in recent_tasks %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>
+                        {% for user in task.assigned_to.all %}
+                        {{ user.username }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                        Unassigned
+                        {% endfor %}
+                    </td>
+                    <td>{{ task.created_at|date:"M d, Y" }}</td>
+                    <td><span class="status {{ task.status }}">{{ task.status|capfirst }}</span></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No tasks yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section class="graded-section">
+        <h3>Previously Graded Tasks</h3>
+        <div class="results-grid">
+            {% for task in graded_tasks %}
+            <div class="result-card">
+                <div class="result-info">
+                    <h5>{{ task.title }}</h5>
+                    <p>By
+                        {% for user in task.assigned_to.all %}
+                        {{ user.username }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                        Unassigned
+                        {% endfor %}
+                    </p>
+                    <p>Graded: {{ task.grade }}</p>
+                    <p>On {{ task.updated_at|date:"M d, Y" }}</p>
+                </div>
+                <div class="result-actions">
+                    <a href="{% url 'review_task' task.id %}" class="btn secondary">Re-Review</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>No graded tasks yet.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{% endblock %}

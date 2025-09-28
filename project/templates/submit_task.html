@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Submit Task{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/add_task.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container" role="main" aria-labelledby="submit-task-title">
+    <a href="javascript:history.back()" class="back-link mb-3">← Back</a>
+    <h1 id="submit-task-title">Submit Task</h1>
+
+    <!-- Task Details -->
+    <div class="task-details mb-4">
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+    </div>
+
+    <!-- Submission Form -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            {{ form.file.label_tag }}
+            {{ form.file }}
+            {{ form.file.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.notes.label_tag }}
+            {{ form.notes }}
+            {{ form.notes.errors }}
+        </div>
+
+        <button type="submit" class="submit-button">Submit Task</button>
+    </form>
+</div>
+{% endblock %}

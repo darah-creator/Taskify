@@ -1,0 +1,231 @@
+/* ===== CSS Variables ===== */
+:root
+{
+    --primary-bg: #0f172a;
+    --secondary-bg: #1e293b;
+    --accent: #3b82f6;
+    --text: #f8fafc;
+    --subtext: #94a3b8;
+    --hover: #60a5fa;
+
+    --card-bg: var(--secondary-bg);
+    --card-border: #3b3b3b;
+    --card-radius: 0px;
+    --card-padding: 1rem;
+
+    --btn-padding: 0.75rem 1.5rem;
+    --btn-radius: 0px;
+    --btn-font-size: 1rem;
+}
+
+/* ===== Reset & Global ===== */
+body,
+html
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text);
+}
+
+/* ===== Header ===== */
+.page-header
+{
+    text-align: center;
+    padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.page-title
+{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle
+{
+    color: var(--subtext);
+    font-size: 0.95rem;
+}
+
+/* ===== Main Container ===== */
+.main-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* ===== Search Bar ===== */
+.search-bar-container
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 1rem 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-bar
+{
+    flex-grow: 1;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    background: var(--secondary-bg);
+    color: var(--text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar::placeholder
+{
+    color: var(--subtext);
+}
+
+.search-bar:focus
+{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ===== Buttons ===== */
+.search-button,
+.download-button
+{
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.search-button:hover,
+.download-button:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* ===== Results Container ===== */
+.results-container
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 1.5rem;
+}
+
+/* Individual Result Item */
+.result-item
+{
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: transform 0.15s ease;
+}
+
+.result-item:hover
+{
+    transform: translateY(-2px);
+}
+
+.result-title
+{
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+}
+
+.result-snippet
+{
+    font-size: 0.95rem;
+    color: var(--subtext);
+    margin-bottom: 0.5rem;
+}
+
+/* Tasks and actions */
+.result-task
+{
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: var(--card-radius);
+    margin: 0.5rem 0;
+    border: 1px solid var(--card-border);
+}
+
+.download-button
+{
+    align-self: start;
+}
+
+/* ===== Status Badge ===== */
+.status
+{
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.45rem;
+    border-radius: 0px;
+    text-transform: uppercase;
+    margin-left: 0.25rem;
+}
+
+.status.approved
+{
+    background: #10b981;
+    color: var(--primary-bg);
+}
+
+.status.pending
+{
+    background: #f59e0b;
+    color: var(--primary-bg);
+}
+
+.status.rejected
+{
+    background: #ef4444;
+    color: var(--primary-bg);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px)
+{
+    .search-bar-container
+    {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .results-container
+    {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.85rem;
+        max-width: 100%;
+    }
+
+    .result-task
+    {
+        height: 130px;
+    }
+}

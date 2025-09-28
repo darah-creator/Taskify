@@ -1,0 +1,87 @@
+/* Reset & Global */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text);
+    height: 100%;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    min-height: calc(100vh - 70px); /* navbar offset */
+    padding: 2rem;
+}
+
+.hero-content {
+    text-align: left;
+    width: 100%;
+    align-self: left;
+    transition: transform 0.2s;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    position: relative;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--subtext);
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Ensure .button from base is applied; override only minimal differences */
+.button {
+    border-width: 1px;
+}
+
+.button.secondary {
+    /* Map to shared secondary style */
+    background: var(--secondary-bg);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.button.secondary:hover {
+    background: var(--accent);
+    color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

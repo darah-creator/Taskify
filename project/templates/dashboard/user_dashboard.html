@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_dashboard.css' %}">
+{% endblock %}
+
+{% block navbar %}
+<a href="{% url 'signout' %}">Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>Welcome, {{ user.username }}</h2>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-card">
+            <h4>Total</h4>
+            <p>{{ total }}</p>
+        </div>
+        <div class="stat-card pending">
+            <h4>Pending</h4>
+            <p>{{ pending }}</p>
+        </div>
+        <div class="stat-card approved">
+            <h4>Graded</h4>
+            <p>{{ graded }}</p>
+        </div>
+        <div class="stat-card rejected">
+            <h4>Rejected</h4>
+            <p>{{ rejected }}</p>
+        </div>
+    </section>
+
+    <!-- Tasks Section -->
+    <section class="my-tasks">
+        <h3>My Assigned Tasks</h3>
+        <div class="results-grid">
+            {% for task in tasks %}
+            <div class="result-card">
+                <div class="result-info">
+                    <h5>{{ task.title }}</h5>
+                    <span class="status {{ task.status|lower }}">{{ task.status|capfirst }}</span>
+                </div>
+
+            <div class="result-actions">
+                {% if task.status == "assigned" or task.status == "in_progress" %}
+                    <a href="{% url 'submit_task' task.pk %}" class="btn">Submit</a>
+                {% elif task.status == "submitted" %}
+                    <span>Waiting for grading</span>
+                    <form action="{% url 'delete_task' task.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn danger">Delete Submission</button>
+                    </form>
+                {% elif task.status == "graded" %}
+                    <span>Grade: {{ task.grade }}</span>
+                {% elif task.status == "rejected" %}
+                    <span>Rejected</span>
+                    <a href="{% url 'submit_task' task.pk %}" class="btn">Resubmit</a>
+                {% endif %}
+            </div>
+
+            </div>
+            {% empty %}
+            <p>No tasks assigned yet.</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

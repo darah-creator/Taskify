@@ -1,0 +1,248 @@
+/* ===== CSS Variables ===== */
+:root
+{
+    --primary-bg: #0f172a;
+    --secondary-bg: #1e293b;
+    --accent: #3b82f6;
+    --text: #f8fafc;
+    --subtext: #94a3b8;
+    --hover: #60a5fa;
+
+    --form-bg: var(--secondary-bg);
+    --form-border: #3b3b3b;
+    --form-radius: 4px;
+    --form-padding: 2rem;
+
+    --btn-padding: 0.85rem 1.5rem;
+    --btn-radius: 4px;
+    --btn-font-size: 1rem;
+}
+
+/* ===== Page & Container ===== */
+body,
+html
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text);
+}
+
+.page-container
+{
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===== Form Container ===== */
+.form-container
+{
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--secondary-bg);
+    border: 1px solid var(--form-border);
+    border-radius: 0px;
+}
+
+.form-container h1
+{
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.form-group
+{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea
+{
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--form-input-border);
+    border-radius: 0px;
+    background: var(--primary-bg);
+    color: var(--text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus
+{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.result-actions
+{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-actions .btn
+{
+    padding: 0.6rem 1.2rem;
+    border-radius: 0px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--text);
+}
+
+.result-actions .btn:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+}
+
+.result-actions .btn.danger
+{
+    background: #ef4444;
+    color: var(--text);
+    border-color: #ef4444;
+}
+
+.result-actions .btn.danger:hover
+{
+    background: var(--primary-bg);
+    color: #ef4444;
+}
+
+/* ===== Labels & Inputs ===== */
+form label
+{
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    color: var(--subtext);
+    font-weight: 500;
+}
+
+.form-input
+{
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #555;
+    border-radius: var(--form-radius);
+    background: var(--primary-bg);
+    color: var(--text);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-input:focus
+{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* ===== File Input ===== */
+input[type="file"]
+{
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--form-radius);
+    border: 1px solid #555;
+    background: var(--primary-bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+input[type="file"]:focus
+{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* ===== Buttons ===== */
+.button-primary,
+.btn
+{
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+
+.button-primary:hover,
+.btn:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.button-secondary
+{
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: 600;
+    border: 1px solid var(--subtext);
+    background: var(--secondary-bg);
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.button-secondary:hover
+{
+    background: var(--accent);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px)
+{
+    .form-container
+    {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .form-container h2
+    {
+        font-size: 1.5rem;
+    }
+
+    .form-input,
+    input[type="file"]
+    {
+        font-size: 0.95rem;
+        padding: 0.75rem 0.85rem;
+    }
+
+    .button-primary,
+    .button-secondary,
+    .btn
+    {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block navbar %}
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Taskify</h1>
+        <p class="tagline">Jimoh Barakat</p>
+        <div class="hero-buttons">
+            <a href="{% url 'signin' %}" class="button secondary">Sign In</a>
+            <a href="{% url 'signup' %}" class="button secondary">Sign Up</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

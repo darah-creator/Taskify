@@ -1,0 +1,295 @@
+/* ===== CSS Variables & Global Palette ===== */
+:root
+{
+    --primary-bg: #0f172a;
+    /* dark dashboard background */
+    --secondary-bg: #1e293b;
+    /* navbar / panel background */
+    --accent: #3b82f6;
+    /* main accent / links */
+    --text: #f8fafc;
+    /* main text */
+    --subtext: #94a3b8;
+    /* secondary text */
+    --hover: #60a5fa;
+    /* hover effect */
+
+    /* Aliases for other stylesheets */
+    --text-primary: var(--text);
+    --subtext-color: var(--subtext);
+
+    --form-bg: var(--secondary-bg);
+    --form-border: #3b3b3b;
+    /* subtle form border */
+    --form-input-bg: var(--primary-bg);
+    --form-input-border: #555;
+    --form-input-focus: var(--accent);
+    --form-padding: 2rem;
+    --form-radius: 0px;
+
+    --btn-padding: 0.85rem 1.5rem;
+    --btn-font-size: 1rem;
+    --btn-radius: 0px;
+    --btn-transition: 0.2s ease;
+}
+
+/* small utility spacing */
+.mt-1{ margin-top: 0.25rem; }
+.mt-2{ margin-top: 0.5rem; }
+.mt-3{ margin-top: 1rem; }
+.mb-1{ margin-bottom: 0.25rem; }
+.mb-2{ margin-bottom: 0.5rem; }
+.mb-3{ margin-bottom: 1rem; }
+
+/* ===== Reset & Global ===== */
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html
+{
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background: var(--primary-bg);
+    color: var(--text);
+}
+
+/* ===== Navbar ===== */
+.navbar
+{
+    background: var(--secondary-bg);
+    color: var(--text);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container
+{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo
+{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav a
+{
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav a:hover
+{
+    color: var(--hover);
+}
+
+/* ===== Main Page Container ===== */
+.page-container
+{
+    min-height: calc(100vh - 70px);
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== Base Buttons ===== */
+.button
+{
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: var(--btn-radius);
+    cursor: pointer;
+    transition: all var(--btn-transition);
+    text-align: center;
+}
+
+/* Primary / Accent Button */
+.button-primary,
+.btn,
+.auth-form button
+{
+    background: var(--accent);
+    color: var(--text);
+    border: 1px solid var(--accent);
+}
+
+.button-primary:hover,
+.btn:hover,
+.auth-form button:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+}
+
+/* Secondary / Neutral Button */
+.button-secondary,
+.button.secondary
+{
+    background: var(--secondary-bg);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.button-secondary:hover,
+.button.secondary:hover
+{
+    background: var(--accent);
+    color: var(--text);
+}
+
+/* Danger Button */
+.button-danger,
+.btn.danger
+{
+    background: #ef4444;
+    color: var(--text);
+    border: 1px solid #ef4444;
+}
+
+.button-danger:hover,
+.btn.danger:hover
+{
+    background: var(--primary-bg);
+    color: #ef4444;
+}
+
+/* Back link */
+.back-link
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover
+{
+    color: var(--hover);
+    text-decoration: underline;
+}
+
+/* ===== Forms ===== */
+.form-card
+{
+    background: var(--form-bg);
+    padding: var(--form-padding);
+    max-width: 400px;
+    margin: 3rem auto;
+    text-align: center;
+    border: 1px solid var(--form-border);
+    border-radius: var(--form-radius);
+}
+
+.form-card h2
+{
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.auth-form input
+{
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--form-input-border);
+    border-radius: var(--form-radius);
+    font-size: 1rem;
+    background: var(--form-input-bg);
+    color: var(--text);
+}
+
+.auth-form input:focus
+{
+    outline: none;
+    border-color: var(--form-input-focus);
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Checkbox */
+.checkbox
+{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: var(--subtext);
+}
+
+.checkbox input
+{
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/* Switch link */
+.switch-link
+{
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--subtext);
+}
+
+.switch-link a
+{
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch-link a:hover
+{
+    text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px)
+{
+    .form-card
+    {
+        padding: 1.5rem;
+        margin: 2rem auto;
+    }
+
+    .form-card h2
+    {
+        font-size: 1.5rem;
+    }
+
+    .auth-form input,
+    .auth-form button
+    {
+        font-size: 0.95rem;
+        padding: 0.7rem 0.8rem;
+    }
+
+    .switch-link
+    {
+        font-size: 0.85rem;
+    }
+}

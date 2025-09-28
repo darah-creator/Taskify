@@ -1,0 +1,103 @@
+/* Form Container */
+.form-card
+{
+    background: var(--form-bg);
+    padding: var(--form-padding);
+    max-width: 400px;
+    margin: 3rem auto;
+    text-align: center;
+    border: 1px solid var(--form-border);
+    border-radius: var(--form-radius);
+}
+
+/* Form Title */
+.form-card h2
+{
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Form Inputs */
+.auth-form input
+{
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--form-input-border);
+    border-radius: var(--form-radius);
+    font-size: 1rem;
+    background: var(--form-input-bg);
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+.auth-form input:focus
+{
+    outline: none;
+    border-color: var(--form-input-focus);
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Buttons */
+.auth-form button
+{
+    width: 100%;
+    padding: var(--btn-padding);
+    background: var(--accent);
+    color: var(--text);
+    font-size: var(--btn-font-size);
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    border-radius: var(--form-radius);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.auth-form button:hover
+{
+    background: var(--primary-bg);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* Checkbox */
+.checkbox
+{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: var(--subtext);
+    justify-content: flex-start;
+}
+
+.checkbox input
+{
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/* Switch Link */
+.switch-link
+{
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--subtext);
+}
+
+.switch-link a
+{
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch-link a:hover
+{
+    text-decoration: underline;
+}

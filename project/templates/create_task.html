@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Assign Task{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/add_task.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container" role="main" aria-labelledby="add-task-title">
+    <a href="javascript:history.back()" class="back-link mb-3">← Back</a>
+    <h1 id="add-task-title">Assign New Task</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+
+        <div class="form-group">
+            <label>{{ form.assign_to.label }}</label>
+            {{ form.assign_to }}
+            <p class="help-text">Select specific users or tick "Assign to all".</p>
+        </div>
+
+        <div class="form-group">
+            {{ form.assign_all }}
+            {{ form.assign_all.label_tag }}
+        </div>
+
+        <button type="submit" class="submit-button">Assign Task</button>
+    </form>
+</div>
+{% endblock %}
